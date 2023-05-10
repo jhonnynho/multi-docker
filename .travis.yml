@@ -14,3 +14,8 @@ after_success:
   - docker build -t jdafonsog/multi-nginx ./nginx
   - docker build -t jdafonsog/multi-server ./server
   - docker build -t jdafonsog/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push jdafonsog/multi-client
+  - docker push jdafonsog/multi-nginx
+  - docker push jdafonsog/multi-server
+  - docker push jdafonsog/multi-worker
